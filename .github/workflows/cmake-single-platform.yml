@@ -22,7 +22,6 @@ jobs:
       - run: cmake . -DPATCH_VERSION=${{ github.run_number }} -DCHANGE_APPROACH=ON
       - run: pwd
       - run: ls -altr
-      - run: ls tests/ -altr
       - run: cmake --build .
       - run: cmake --build . --target test
       - run: cmake --build . --target package
