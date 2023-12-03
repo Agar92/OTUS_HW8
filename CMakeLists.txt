@@ -1,10 +1,9 @@
 cmake_minimum_required(VERSION 3.2)
 
-if ($ENV{TRAVIS_BUILD_NUMBER})
-    project(bayan VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
-else()
-    project(bayan VERSION 0.0.1)
-endif()
+set(PATCH_VERSION "1" CACHE INTERNAL "Patch version")
+set(PROJECT_VERSION 0.0.${PATCH_VERSION})
+project(bayan VERSION ${PROJECT_VERSION})
+configure_file(version.h.in version.h)
 
 find_package(Boost COMPONENTS program_options unit_test_framework filesystem regex REQUIRED)
 
@@ -78,7 +77,7 @@ set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
 set(CPACK_PACKAGE_VERSION_MINOR "${PROJECT_VERSION_MINOR}")
 set(CPACK_PACKAGE_VERSION_PATCH "${PROJECT_VERSION_PATCH}")
 
-set(CPACK_PACKAGE_CONTACT example@example.com)
+set(CPACK_PACKAGE_CONTACT agar10@yandex.ru)
 
 include(CPack)
 
