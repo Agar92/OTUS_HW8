@@ -1,5 +1,7 @@
+#define BOOST_TEST_MODULE Test_bayan_Options
+#include <boost/test/included/unit_test.hpp>
+
 #include <boost/program_options.hpp>
-#include <boost/test/unit_test.hpp>
 #include <iostream>
 
 #include <settings.h>
@@ -16,13 +18,16 @@ const size_t char_ptr_size = sizeof(char*);
 
 BOOST_AUTO_TEST_SUITE(Logic)
 
+
 BOOST_AUTO_TEST_CASE(test_help_options)
 {
     const char *argv[] = {"bayan", "--h"};
     int argc = sizeof(argv)/char_ptr_size;;
-    auto settings = CMDSettings::parse_from_arguments(argc, argv); 
+    auto settings = CMDSettings::parse_from_arguments(argc, argv);
     BOOST_TEST(settings.mShowHelp);
+    BOOST_CHECK(settings.mShowHelp==1);
     BOOST_TEST(!settings.mHelpText.empty());
+    std::cout<<"HELL"<<std::endl;
 }
 
 BOOST_AUTO_TEST_CASE(test_default_options)

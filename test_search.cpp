@@ -1,4 +1,6 @@
-#include <boost/test/unit_test.hpp>
+#define BOOST_TEST_MODULE Test_bayan_Search
+#include <boost/test/included/unit_test.hpp>
+
 #include <memory>
 #include <vector>
 
